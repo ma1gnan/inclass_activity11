@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+
 import 'signup_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -36,8 +37,10 @@ class WelcomeScreen extends StatelessWidget {
                 ],
                 totalRepeatCount: 1,
               ),
-              const Text('Register your creature companion… if you dare.',
-                  style: TextStyle(color: Colors.white70)),
+              const Text(
+                'Register your creature companion… if you dare.',
+                style: TextStyle(color: Colors.white70),
+              ),
               const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: () {
@@ -49,7 +52,10 @@ class WelcomeScreen extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.deepOrange,
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 32,
+                    vertical: 14,
+                  ),
                 ),
                 child: const Text('Enter the Registry'),
               ),

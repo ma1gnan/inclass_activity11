@@ -16,18 +16,19 @@ class SuccessScreen extends StatefulWidget {
 }
 
 class _SuccessScreenState extends State<SuccessScreen> {
-  late final ConfettiController _confetti =
-      ConfettiController(duration: const Duration(seconds: 3));
+  late final ConfettiController _confetti = ConfettiController(
+    duration: const Duration(seconds: 3),
+  );
 
   @override
   void initState() {
     super.initState();
-    _confetti.play();  // 🎉 fire the cannon once, on arrival
+    _confetti.play();
   }
 
   @override
   void dispose() {
-    _confetti.dispose();  // every controller gets a proper burial
+    _confetti.dispose();
     super.dispose();
   }
 
@@ -36,31 +37,66 @@ class _SuccessScreenState extends State<SuccessScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('\u{1F383}',
-                    style: TextStyle(fontSize: 72)),
-                Text(
-                  'Welcome, ${widget.userName}!',
-                  style: const TextStyle(
-                      fontSize: 28, fontWeight: FontWeight.bold),
+          Container(
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xFF2E1065), Color(0xFF14101F)],
+              ),
+            ),
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('🎃', style: TextStyle(fontSize: 72)),
+                    const SizedBox(height: 20),
+
+                    Text(
+                      'Welcome, ${widget.userName}!',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+
+                    Text(
+                      'Creature registered: ${widget.creatureType}.',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.white70,
+                        fontSize: 20,
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.popUntil(context, (route) => route.isFirst);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.deepOrange,
+                        foregroundColor: Colors.white,
+                      ),
+                      child: const Text('Back to the Foyer'),
+                    ),
+                  ],
                 ),
-                const Text(
-                    'Creature registered: ${widget.creatureType}.'),
-                const SizedBox(height: 24),
-                ElevatedButton(
-                  onPressed: () => Navigator.popUntil(
-                      context, (route) => route.isFirst),
-                  child: const Text('Back to the Foyer'),
-                ),
-              ],
+              ),
             ),
           ),
+
           Align(
             alignment: Alignment.topCenter,
-            child: ConfettiWidget(confettiController: _confetti),
+            child: IgnorePointer(
+              child: ConfettiWidget(confettiController: _confetti),
+            ),
           ),
         ],
       ),
