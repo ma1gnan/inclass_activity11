@@ -3,12 +3,18 @@ CSC 4360 in Class Activity 11 The Haunted Creature Registry
 
 Deborah Maignan
 
-Name validation
-Email validation
-Password validation
-Creature dropdown
-Birth date picker
-Loading indicator
-Success screen
-Navigation
-Confetti
+- 'Name validation'
+- 'Email validation'
+- 'Password validation'
+- 'Creature dropdown'
+- 'Birth date picker'
+- 'Loading indicator'
+- 'Success screen'
+- 'Navigation'
+- 'Confetti'
+
+- `_nameController.dispose()`
+- `_emailController.dispose()`
+- `_passwordController.dispose()`
+- `_dateController.dispose()`
+
