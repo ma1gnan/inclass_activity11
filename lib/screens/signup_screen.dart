@@ -12,12 +12,10 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  // Original Activity 10 controllers
+  // Controllers
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
-  // Activity 11 additions
   final _dateController = TextEditingController();
 
   bool _obscurePassword = true;
@@ -34,7 +32,7 @@ class _SignupScreenState extends State<SignupScreen> {
     'Witch',
   ];
 
-  // Potion 1: Birth date picker
+  // Potion B: Birth date picker
   Future<void> _pickBirthDate() async {
     final picked = await showDatePicker(
       context: context,
@@ -55,7 +53,7 @@ class _SignupScreenState extends State<SignupScreen> {
     }
   }
 
-  // Potion 2: Loading and navigation
+  // Potion C: Loading and navigation
   Future<void> _submit() async {
     if (_submitting) return;
 
@@ -131,7 +129,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 24),
 
-                // ACTIVITY 10: Name validator unchanged
+                // ACTIVITY 10 Potion A
                 TextFormField(
                   controller: _nameController,
                   style: const TextStyle(color: Colors.white),
@@ -145,7 +143,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // ACTIVITY 10: Email validator unchanged
+                // Email validator unchanged
                 TextFormField(
                   controller: _emailController,
                   style: const TextStyle(color: Colors.white),
@@ -163,8 +161,8 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // ACTIVITY 10: Password validator unchanged
-                // ACTIVITY 11: Visibility toggle added
+                // Password validator
+                // Potion A: Visibility toggle added
                 TextFormField(
                   controller: _passwordController,
                   obscureText: _obscurePassword,
@@ -196,7 +194,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // ACTIVITY 11: Required creature dropdown
+                // Required creature dropdown
                 DropdownButtonFormField<String>(
                   initialValue: _selectedCreatureType,
                   dropdownColor: const Color(0xFF2E1065),
@@ -222,7 +220,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // ACTIVITY 11: Birth date picker
+                // Potion B: Birth date picker
                 TextFormField(
                   controller: _dateController,
                   readOnly: true,
@@ -235,7 +233,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 24),
 
-                // ACTIVITY 11: Loading button
+                // Potion C: Loading state before navigation
                 ElevatedButton(
                   onPressed: _submitting ? null : _submit,
                   style: ElevatedButton.styleFrom(
